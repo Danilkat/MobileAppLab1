@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MobileAppLab1</string>
+    <string name="splashscreen_text">WordsFactory</string>
 </resources>
