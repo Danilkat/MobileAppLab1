@@ -7,6 +7,10 @@ android {
     namespace 'com.example.mobileapplab1'
     compileSdk 33
 
+    buildFeatures {
+        viewBinding true
+    }
+
     defaultConfig {
         applicationId "com.example.mobileapplab1"
         minSdk 29
