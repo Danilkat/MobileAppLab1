@@ -1,13 +1,17 @@
 package com.example.mobileapplab1
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.button.MaterialButton
 
 class OnboardingActivity : AppCompatActivity() {
 
@@ -57,6 +61,21 @@ class OnboardingActivity : AppCompatActivity() {
         })
         (onboardingViewPager.getChildAt(0) as RecyclerView).overScrollMode =
             RecyclerView.OVER_SCROLL_NEVER
+        findViewById<MaterialButton>(R.id.buttonNext).setOnClickListener {
+            if (onboardingViewPager.currentItem + 1 < onboardingItemsAdapter.itemCount) {
+                onboardingViewPager.currentItem += 1
+            } else {
+                navigateToHomeActivity()
+            }
+        }
+        findViewById<TextView>(R.id.textSkip).setOnClickListener {
+            navigateToHomeActivity()
+        }
+    }
+
+    private fun navigateToHomeActivity() {
+        startActivity(Intent(applicationContext, SignupActivity::class.java))
+        finish()
     }
 
     private fun setupIndicators() {
