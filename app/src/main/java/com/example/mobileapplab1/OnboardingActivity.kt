@@ -6,6 +6,7 @@ import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 
 class OnboardingActivity : AppCompatActivity() {
@@ -17,6 +18,7 @@ class OnboardingActivity : AppCompatActivity() {
         setContentView(R.layout.activity_onboarding)
         setOnboardingItems()
         setupIndicators()
+        setCurrentIndicator(0)
     }
 
     private fun setOnboardingItems() {
@@ -46,6 +48,15 @@ class OnboardingActivity : AppCompatActivity() {
 
         val onboardingViewPager = findViewById<ViewPager2>(R.id.onboardingViewPager)
         onboardingViewPager.adapter = onboardingItemsAdapter
+        onboardingViewPager.registerOnPageChangeCallback(object :
+        ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                setCurrentIndicator(position)
+            }
+        })
+        (onboardingViewPager.getChildAt(0) as RecyclerView).overScrollMode =
+            RecyclerView.OVER_SCROLL_NEVER
     }
 
     private fun setupIndicators() {
@@ -68,5 +79,27 @@ class OnboardingActivity : AppCompatActivity() {
             }
         }
 
+    }
+
+    private fun setCurrentIndicator(position: Int) {
+        val childCount = indicatorsContainer.childCount
+        for (i in 0 until childCount) {
+            val imageView = indicatorsContainer.getChildAt(i) as ImageView
+            if (i == position) {
+                imageView.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        applicationContext,
+                        R.drawable.indicator_active_background
+                    )
+                )
+            } else {
+                imageView.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        applicationContext,
+                        R.drawable.indicator_inactive_background
+                    )
+                )
+            }
+        }
     }
 }
