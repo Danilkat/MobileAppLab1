@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="start_gradient">#E3562A</color>
-    <color name="end_gradient">#F29F3F</color>
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
@@ -9,5 +7,16 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
     <color name="text_dark">#3C3A36</color>
+    <color name="text_dark_gray">#78746D</color>
+    <color name="primary">#E3562A</color>
+    <color name="secondary">#65AAEA</color>
+    <color name="success">#5BA092</color>
+    <color name="error">#EF4949</color>
+    <color name="warning">#F2A03F</color>
+
+    <color name="end_gradient">#F29F3F</color>
+
+
 </resources>

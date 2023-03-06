@@ -6,4 +6,59 @@
     android:layout_height="match_parent"
     tools:context=".OnboardingActivity">
 
+
+    <LinearLayout
+        android:id="@+id/indicatorsContainer"
+        android:layout_width="52dp"
+        android:layout_height="6dp"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/buttonNext"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"></LinearLayout>
+
+    <Button
+        android:id="@+id/buttonNext"
+        android:layout_width="311dp"
+        android:layout_height="56dp"
+        android:layout_marginBottom="37dp"
+        android:backgroundTint="@color/primary"
+        android:fontFamily="@font/rubik_medium"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:text="@string/onboarding_next"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:cornerRadius="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textSkip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/rubik_medium"
+        android:text="@string/onboarding_skip"
+        android:textColor="@color/text_dark_gray"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/onboardingViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/indicatorsContainer"
+        app:layout_constraintTop_toBottomOf="@+id/textSkip">
+
+    </androidx.viewpager2.widget.ViewPager2>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
