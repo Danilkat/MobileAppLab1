@@ -2,5 +2,6 @@
     <string name="app_name">MobileAppLab1</string>
     <string name="splashscreen_text">WordsFactory</string>
     <string name="onboarding_next">Next</string>
+    <string name="onboarding_start">Let\'s Start</string>
     <string name="onboarding_skip">Skip</string>
 </resources>
