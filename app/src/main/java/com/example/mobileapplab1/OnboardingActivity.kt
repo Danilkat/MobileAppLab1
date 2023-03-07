@@ -57,6 +57,7 @@ class OnboardingActivity : AppCompatActivity() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 setCurrentIndicator(position)
+                updateNextText(position)
             }
         })
         (onboardingViewPager.getChildAt(0) as RecyclerView).overScrollMode =
@@ -65,15 +66,15 @@ class OnboardingActivity : AppCompatActivity() {
             if (onboardingViewPager.currentItem + 1 < onboardingItemsAdapter.itemCount) {
                 onboardingViewPager.currentItem += 1
             } else {
-                navigateToHomeActivity()
+                navigateToSignupActivity()
             }
         }
         findViewById<TextView>(R.id.textSkip).setOnClickListener {
-            navigateToHomeActivity()
+            navigateToSignupActivity()
         }
     }
 
-    private fun navigateToHomeActivity() {
+    private fun navigateToSignupActivity() {
         startActivity(Intent(applicationContext, SignupActivity::class.java))
         finish()
     }
@@ -119,6 +120,15 @@ class OnboardingActivity : AppCompatActivity() {
                     )
                 )
             }
+        }
+    }
+
+    private fun updateNextText(position: Int) {
+        val nextText = findViewById<Button>(R.id.buttonNext)
+        if (position == indicatorsContainer.childCount - 1) {
+            nextText.text = getString(R.string.onboarding_start)
+         } else {
+            nextText.text = getString(R.string.onboarding_next)
         }
     }
 }
