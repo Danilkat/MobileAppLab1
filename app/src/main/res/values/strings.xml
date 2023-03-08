@@ -7,10 +7,15 @@
     <string name="hint_name">Name</string>
     <string name="hint_e_mail">E-mail</string>
     <string name="hint_password">Password</string>
+    <string name="hint_dictionary_search">Search</string>
     <string name="header_sign_up">Sign up</string>
     <string name="desc_signup">Create your account</string>
     <string name="button_log_in">Log in</string>
     <string name="button_sign_up">Sign up</string>
     <string name="loginFail">Login failure</string>
     <string name="loginFailEmpty">Empty fields</string>
+    <string name="title_activity_navigation">NavigationActivity</string>
+    <string name="title_dictionary">Dictionary</string>
+    <string name="title_training">Training</string>
+    <string name="title_video">Video</string>
 </resources>
