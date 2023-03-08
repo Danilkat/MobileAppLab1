@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.mobileapplab1.*
 import com.example.mobileapplab1.databinding.FragmentDictionaryBinding
 
 class DictionaryFragment : Fragment() {
@@ -28,10 +30,25 @@ class DictionaryFragment : Fragment() {
         _binding = FragmentDictionaryBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textDictionary
-        dictionaryViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+        val dictionaryMeaningItemsAdapter = DictionaryMeaningItemsAdapter(
+            listOf(
+                DictionaryMeaningItem(
+                    meaning = "The practice or skill of preparing food by combining, mixing, and heating ingredients. \n" +
+                            "Example: he developed an interest in cooking.",
+                    meaningExample = ""
+                ),
+                DictionaryMeaningItem(
+                    meaning = "The practice or skill of preparing food by combining, mixing, and heating ingredients. \n" +
+                            "Example: he developed an interest in cooking.",
+                    meaningExample = ""
+                )
+            )
+
+        )
+
+        binding.recyclerViewDictionary.layoutManager = LinearLayoutManager(root.context)
+        binding.recyclerViewDictionary.adapter = dictionaryMeaningItemsAdapter
+
         return root
     }
 
