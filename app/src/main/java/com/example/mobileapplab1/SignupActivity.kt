@@ -14,7 +14,7 @@ class SignupActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.buttonSignup).setOnClickListener {
             if (fieldsNotEmpty()) {
-                startActivity(Intent(this@SignupActivity, DictionaryActivity::class.java))
+                startActivity(Intent(this@SignupActivity, NavigationActivity::class.java))
                 finish()
                 return@setOnClickListener
             }
