@@ -10,6 +10,7 @@
 
     <color name="text_dark">#3C3A36</color>
     <color name="text_dark_gray">#78746D</color>
+    <color name="text_gray">#BEBAB3</color>
     <color name="primary">#E3562A</color>
     <color name="secondary">#65AAEA</color>
     <color name="success">#5BA092</color>
