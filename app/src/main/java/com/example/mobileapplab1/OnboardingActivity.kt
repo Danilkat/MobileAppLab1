@@ -12,14 +12,19 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.button.MaterialButton
+import com.example.mobileapplab1.databinding.ActivityOnboardingBinding
 
 class OnboardingActivity : AppCompatActivity() {
 
     private lateinit var onboardingItemsAdapter: OnboardingItemsAdapter
     private lateinit var indicatorsContainer: LinearLayout
+    private lateinit var binding: ActivityOnboardingBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_onboarding)
+
+        binding = ActivityOnboardingBinding.inflate(layoutInflater)
+
+        setContentView(binding.root)
         setOnboardingItems()
         setupIndicators()
         setCurrentIndicator(0)
@@ -50,7 +55,7 @@ class OnboardingActivity : AppCompatActivity() {
 
         )
 
-        val onboardingViewPager = findViewById<ViewPager2>(R.id.onboardingViewPager)
+        val onboardingViewPager = binding.onboardingViewPager
         onboardingViewPager.adapter = onboardingItemsAdapter
         onboardingViewPager.registerOnPageChangeCallback(object :
         ViewPager2.OnPageChangeCallback() {
@@ -62,14 +67,14 @@ class OnboardingActivity : AppCompatActivity() {
         })
         (onboardingViewPager.getChildAt(0) as RecyclerView).overScrollMode =
             RecyclerView.OVER_SCROLL_NEVER
-        findViewById<MaterialButton>(R.id.buttonNext).setOnClickListener {
+        binding.buttonNext.setOnClickListener {
             if (onboardingViewPager.currentItem + 1 < onboardingItemsAdapter.itemCount) {
                 onboardingViewPager.currentItem += 1
             } else {
                 navigateToSignupActivity()
             }
         }
-        findViewById<TextView>(R.id.textSkip).setOnClickListener {
+        binding.textSkip.setOnClickListener {
             navigateToSignupActivity()
         }
     }
@@ -80,7 +85,7 @@ class OnboardingActivity : AppCompatActivity() {
     }
 
     private fun setupIndicators() {
-        indicatorsContainer = findViewById(R.id.indicatorsContainer)
+        indicatorsContainer = binding.indicatorsContainer
         val indicators = arrayOfNulls<ImageView>(onboardingItemsAdapter.itemCount)
         val layoutParams: LinearLayout.LayoutParams =
             LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT)
@@ -124,7 +129,7 @@ class OnboardingActivity : AppCompatActivity() {
     }
 
     private fun updateNextText(position: Int) {
-        val nextText = findViewById<Button>(R.id.buttonNext)
+        val nextText = binding.buttonNext
         if (position == indicatorsContainer.childCount - 1) {
             nextText.text = getString(R.string.onboarding_start)
          } else {

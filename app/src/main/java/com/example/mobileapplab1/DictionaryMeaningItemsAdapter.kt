@@ -6,13 +6,14 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mobileapplab1.databinding.DictionaryMeaningItemContainerBinding
 
 class DictionaryMeaningItemsAdapter(private val dictionaryMeaningItems: List<DictionaryMeaningItem>) :
     RecyclerView.Adapter<DictionaryMeaningItemsAdapter.DictionaryMeaningItemViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DictionaryMeaningItemViewHolder {
-        return DictionaryMeaningItemViewHolder(LayoutInflater.from(parent.context).inflate(
-            R.layout.dictionary_meaning_item_container,
+        return DictionaryMeaningItemViewHolder(DictionaryMeaningItemContainerBinding.inflate(
+            LayoutInflater.from(parent.context),
             parent,
             false
         ))
@@ -26,9 +27,10 @@ class DictionaryMeaningItemsAdapter(private val dictionaryMeaningItems: List<Dic
         return dictionaryMeaningItems.size
     }
 
-    inner class DictionaryMeaningItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    inner class DictionaryMeaningItemViewHolder(binding: DictionaryMeaningItemContainerBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
-        private val textMeaning = view.findViewById<TextView>(R.id.textMeaning)
+        private val textMeaning = binding.textMeaning
 
         fun bind(dictionaryMeaningItem: DictionaryMeaningItem) {
             textMeaning.text = dictionaryMeaningItem.meaning

@@ -6,13 +6,19 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AlertDialog
 import com.google.android.material.textfield.TextInputEditText
+import com.example.mobileapplab1.databinding.ActivitySignupBinding
 
 class SignupActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivitySignupBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_signup)
 
-        findViewById<Button>(R.id.buttonSignup).setOnClickListener {
+        binding = ActivitySignupBinding.inflate(layoutInflater)
+
+        setContentView(binding.root)
+
+        binding.buttonSignup.setOnClickListener {
             if (fieldsNotEmpty()) {
                 startActivity(Intent(this@SignupActivity, NavigationActivity::class.java))
                 finish()
@@ -27,9 +33,9 @@ class SignupActivity : AppCompatActivity() {
     }
 
     private fun fieldsNotEmpty(): Boolean {
-        val fieldName = findViewById<TextInputEditText>(R.id.signup_input_name)
-        val fieldEmail = findViewById<TextInputEditText>(R.id.signup_input_email)
-        val fieldPassword = findViewById<TextInputEditText>(R.id.signup_input_password)
+        val fieldName = binding.signupInputName
+        val fieldEmail = binding.signupInputEmail
+        val fieldPassword = binding.signupInputPassword
         return (fieldName.text.toString().isNotEmpty() &&
                 fieldEmail.text.toString().isNotEmpty() &&
                 fieldPassword.text.toString().isNotEmpty())
