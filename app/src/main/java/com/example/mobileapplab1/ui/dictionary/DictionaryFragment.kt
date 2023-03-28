@@ -1,10 +1,13 @@
 package com.example.mobileapplab1.ui.dictionary
 
 import android.annotation.SuppressLint
+import android.media.AudioManager
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -24,6 +27,7 @@ class DictionaryFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    lateinit var mediaPlayer: MediaPlayer
 
     @SuppressLint("NotifyDataSetChanged")
     override fun onCreateView(
@@ -48,12 +52,34 @@ class DictionaryFragment : Fragment() {
         val meaningItems: MutableList<DictionaryMeaningItem> = mutableListOf()
         val dictionaryMeaningItemsAdapter = DictionaryMeaningItemsAdapter(meaningItems)
 
+        mediaPlayer = MediaPlayer()
+        mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC)
+        var playerAvailable = false;
 
         binding.textInputLayoutCookingSearch.setEndIconOnClickListener {
             val word: String = binding.dictionaryInputCooking.text.toString()
+            playerAvailable = false;
             lifecycleScope.launch(Dispatchers.IO) {
-                val result = service.getWordMeaning(word)[0]
+                val result: WordInformation;
+                try {
+                    result = service.getWordMeaning(word)[0]
+                } catch (e: retrofit2.HttpException) {
+                    e.printStackTrace()
+                    withContext(Dispatchers.Main) {
+                        AlertDialog.Builder(binding.root.context)
+                            .setTitle(getString(R.string.dictionary_not_found_title))
+                            .setMessage(R.string.dictionary_not_found_desc)
+                            .show()
+                    }
+                    return@launch;
+                }
                 withContext(Dispatchers.Main) {
+
+                    if (result.phonetics[0].audio != "") {
+                        mediaPlayer.setDataSource(result.phonetics[0].audio)
+                        mediaPlayer.prepareAsync()
+                        playerAvailable = true;
+                    }
                     binding.textWord.text = result.word
                     binding.textPhonetic.text = result.phonetics[0].transcription
                     binding.textPartOfSpeech.text = result.meanings[0].partOfSpeech
@@ -62,12 +88,22 @@ class DictionaryFragment : Fragment() {
                         meaningItems += DictionaryMeaningItem(definition.definition, definition.example)
                     }
                     dictionaryMeaningItemsAdapter.notifyDataSetChanged()
+
+
                 }
+            }
+        }
+
+        binding.imagePlaySound.setOnClickListener {
+            if (playerAvailable) {
+                mediaPlayer.start()
             }
         }
 
         binding.recyclerViewDictionary.layoutManager = LinearLayoutManager(root.context)
         binding.recyclerViewDictionary.adapter = dictionaryMeaningItemsAdapter
+
+
 
         return root
     }

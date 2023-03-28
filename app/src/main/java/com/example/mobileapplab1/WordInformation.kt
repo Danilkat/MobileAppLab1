@@ -13,7 +13,7 @@ data class WordInformation(
 
 data class Phonetics(
     @Json(name = "text")
-    val transcription: String,
+    val transcription: String? = "",
 
     @Json(name = "audio")
     val audio: String
