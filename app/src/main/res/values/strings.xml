@@ -18,4 +18,10 @@
     <string name="title_dictionary">Dictionary</string>
     <string name="title_training">Training</string>
     <string name="title_video">Video</string>
+    <string name="dictionary_part_of_speech">Part of speech:</string>
+    <string name="dictionary_meanings">Meanings:</string>
+    <string name="dictionary_add_to">Add to Dictionary</string>
+    <string name="dictionary_example_literal">Example:</string>
+    <string name="dictionary_not_found_title">No Definitions Found</string>
+    <string name="dictionary_not_found_desc">Sorry pal, we couldn\'t find definitions for the word you were looking for.</string>
 </resources>

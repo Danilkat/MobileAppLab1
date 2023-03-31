@@ -1,5 +1,6 @@
 package com.example.mobileapplab1
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,9 +32,12 @@ class DictionaryMeaningItemsAdapter(private val dictionaryMeaningItems: List<Dic
         RecyclerView.ViewHolder(binding.root) {
 
         private val textMeaning = binding.textMeaning
+        private val textExample = binding.textExample
 
+        @SuppressLint("SetTextI18n")
         fun bind(dictionaryMeaningItem: DictionaryMeaningItem) {
             textMeaning.text = dictionaryMeaningItem.meaning
+            textExample.text = "Example: " + dictionaryMeaningItem.meaningExample
         }
     }
 }

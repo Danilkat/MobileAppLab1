@@ -39,12 +39,11 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textWord"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/rubik_medium"
-        android:text="Cooking"
         android:textAlignment="viewEnd"
         android:textColor="@color/black"
         android:textSize="24sp"
@@ -57,12 +56,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/rubik_medium"
-        android:text="Part of Speech:"
+        android:text="@string/dictionary_part_of_speech"
         android:textAlignment="viewEnd"
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/textInputLayout_cooking_search"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/textWord" />
 
     <TextView
         android:id="@+id/textView6"
@@ -70,7 +69,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/rubik_medium"
-        android:text="Meanings:"
+        android:text="@string/dictionary_meanings"
         android:textAlignment="viewEnd"
         android:textColor="@color/black"
         android:textSize="20sp"
@@ -78,12 +77,11 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/textPartOfSpeech"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:fontFamily="@font/rubik"
-        android:text="Noun"
         android:textAlignment="viewEnd"
         android:textColor="@color/black"
         android:textSize="14sp"
@@ -92,28 +90,27 @@
         app:layout_constraintTop_toTopOf="@+id/textView4" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/textPhonetic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:fontFamily="@font/rubik"
-        android:text="[ˈkʊkɪŋ]"
         android:textAlignment="viewStart"
         android:textColor="@color/primary"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView2"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toTopOf="@+id/textView2" />
+        app:layout_constraintBottom_toBottomOf="@+id/textWord"
+        app:layout_constraintStart_toEndOf="@+id/textWord"
+        app:layout_constraintTop_toTopOf="@+id/textWord" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/imagePlaySound"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:src="@drawable/ic_dictionary_listen_24dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView3"
-        app:layout_constraintStart_toEndOf="@+id/textView3"
-        app:layout_constraintTop_toTopOf="@+id/textView3" />
+        app:layout_constraintBottom_toBottomOf="@+id/textPhonetic"
+        app:layout_constraintStart_toEndOf="@+id/textPhonetic"
+        app:layout_constraintTop_toTopOf="@+id/textPhonetic" />
 
     <Button
         android:id="@+id/button"
@@ -123,7 +120,7 @@
         android:fontFamily="@font/rubik_medium"
         android:insetTop="0dp"
         android:insetBottom="0dp"
-        android:text="Add to Dictionary"
+        android:text="@string/dictionary_add_to"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="16sp"
@@ -135,7 +132,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewDictionary"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginStart="1dp"
         android:layout_marginTop="1dp"
         android:layout_marginEnd="1dp"
