@@ -24,4 +24,5 @@
     <string name="dictionary_example_literal">Example:</string>
     <string name="dictionary_not_found_title">No Definitions Found</string>
     <string name="dictionary_not_found_desc">Sorry pal, we couldn\'t find definitions for the word you were looking for.</string>
+    <string name="training_start">Start</string>
 </resources>

@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
     WordEntity::class,
     MeaningEntity::class
 ],
-version = 3)
+version = 4)
 abstract class DictionaryDatabase: RoomDatabase() {
 
     abstract fun dictionaryDao(): DictionaryDao
