@@ -28,3 +28,8 @@ data class WordWithMeaningsEntity(
     )
     val meanings: List<MeaningEntity>
 )
+
+data class TestObject(
+    val name: String = "",
+    val v_meaning: String = ""
+)

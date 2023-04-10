@@ -8,12 +8,12 @@ interface DictionaryDao {
     @Query("SELECT * FROM WordEntity WHERE name = :word")
     fun findByWord(word: String): WordWithMeaningsEntity?
 
-    @Query("SELECT * FROM MeaningEntity AS meaning " +
+    @Query("SELECT meaning.name AS name, meaning.meaning AS v_meaning FROM MeaningEntity AS meaning " +
             "JOIN WordEntity AS word " +
             "ON meaning.name = word.name " +
             "GROUP BY meaning.name " +
             "ORDER BY word.learning_speed ASC")
-    fun getUniqueMeanings(): WordWithMeaningsEntity?
+    fun getUniqueMeanings(): List<TestObject>
 
     @Query("SELECT COUNT(*) FROM WordEntity")
     fun getCount(): Int
