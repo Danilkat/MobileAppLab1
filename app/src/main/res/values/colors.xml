@@ -19,5 +19,11 @@
 
     <color name="end_gradient">#F29F3F</color>
 
+    <color name="training_5">#E3562A</color>
+    <color name="training_4">#65AAEA</color>
+    <color name="training_3">#5BA092</color>
+    <color name="training_2">#F2A03F</color>
+    <color name="training_1">#EF4949</color>
+    <color name="training_GO">#E3562A</color>
 
 </resources>

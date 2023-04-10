@@ -8,7 +8,8 @@ data class WordEntity(
     val name: String,
     @ColumnInfo(name = "transcription") val transcription: String?,
     @ColumnInfo(name = "part_of_speech") val partOfSpeech: String?,
-    @ColumnInfo(name = "audio") val audio: String?
+    @ColumnInfo(name = "audio") val audio: String?,
+    @ColumnInfo(name = "learning_speed") val learningSpeed: Int = 0
 )
 
 @Entity(primaryKeys = ["name", "meaning"])
